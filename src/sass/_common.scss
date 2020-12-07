@@ -1,0 +1,19 @@
+
+
+
+// --------------------------- TRANSITIONs -----------------------------------
+// transizione in ingresso, per apparire gradualmente
+.fade-enter-active {
+    transition: opacity 1.5s;
+}
+.fade-enter {
+    opacity: 0;
+}
+
+// transizione in uscita, per scomparire gradualmente
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-leave-to {
+    opacity: 0;
+}
