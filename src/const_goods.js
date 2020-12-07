@@ -26,5 +26,5 @@ export const GOODS = Object.keys(GOODS_AND_CATEGORIES);
 export const EXEMPT_CATEGORIES = ['medical','food','book'];
 
 // taxes percentage
-export const BASIC_TAX = 10;
-export const IMPORT_TAX = 5;
+export const BASIC_TAX = 0.10; // 10%
+export const IMPORT_TAX = 0.05; // 5%

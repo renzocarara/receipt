@@ -11,11 +11,32 @@ export default new Vuex.Store({
     importTax: IMPORT_TAX,
     exemptCategories: EXEMPT_CATEGORIES,
 
-    datofittizio: TEST_DATA,
+    currentSelectedInput: "Input 1",
 
+    // predefined input/output
+    inputs: TEST_DATA["Input 1"].inputs,
+    subtotal: TEST_DATA["Input 1"].subtotal,
+    tax: TEST_DATA["Input 1"].tax,
+    total: TEST_DATA["Input 1"].total,
   },
-  getters: {},
+
+  getters: {
+      // la uso????
+    // GET_CURRENT_SELECTED_INPUT(state) {
+    //   return state.currentSelectedInput;
+    // },
+  },
+
   mutations: {
-    initReceipts() {},
+    //   INIT_RECEIPT() {
+    //     // inizializza inputs, expSubtotal, etc..
+    //   },
+    SET_CURRENT_SELECTED_INPUT(state, value) {
+      state.currentSelectedInput = value;
+      state.inputs = TEST_DATA[value].inputs;
+      state.subtotal = TEST_DATA[value].subtotal;
+      state.tax = TEST_DATA[value].tax;
+      state.total = TEST_DATA[value].total;
+    },
   },
 });

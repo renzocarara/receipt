@@ -1,4 +1,4 @@
-# revceipt
+# RECEIPT
 
 ## Project setup
 ```

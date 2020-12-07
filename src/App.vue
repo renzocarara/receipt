@@ -8,15 +8,15 @@
                 class="shrink mr-4"
                 contain
                 src="@/assets/logo_receipt.png"
-                width="50"
+                width="40"
                 height="40"
                 />
             </router-link>
 
             <router-link class="text-decoration-none" to="/">
-                <v-toolbar-title class="white--text">
-                    <span class="my-title re">RE</span>
-                    <span class="my-title ceipt">CEIPT</span>
+                <v-toolbar-title>
+                    <span class="app-title re">RE</span>
+                    <span class="app-title ceipt">CEIPT</span>
                 </v-toolbar-title>
             </router-link>
 
@@ -76,6 +76,7 @@ export default {
             group: null
         };
     },
+    // change page title when move from one page to another
     watch: {
     $route(to) {
         document.title = `RECEIPT - ${to.meta.title}`;
@@ -88,7 +89,7 @@ export default {
 
 <style lang="scss">
 //
-.my-title{
+.app-title{
     font-family: 'Archivo Black', sans-serif;
     font-weight: bold;
     font-size: 26px;
