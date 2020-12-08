@@ -54,21 +54,13 @@ export default {
       SettingsPanel,
       SelectInput
   },
-  mounted(){
-
-        // qui potrei fare una MEGLIO NELL APP.VUE (MOUNTED)
-        // this.$store.commit('INIT_RECEIPT');
-        // console.log("inputs in Store:", this.$store.state.inputs);
-
-  },
+  
   data: () => ({
        
         selectableInputs: ['Input 1', 'Input 2', 'Input 3'], // predefined inputs
        
     }),
-  methods:{
-   
-  },
+ 
   computed: {
         // read/write from/to the Store 
         selectedInput: {

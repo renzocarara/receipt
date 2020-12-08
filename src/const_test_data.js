@@ -44,3 +44,5 @@ export const TEST_DATA = {
   // //////////////////////////////////////////
 
 };
+
+export const INITIAL_TESTCASE = Object.keys(TEST_DATA)[0];  // name of the 1st test case

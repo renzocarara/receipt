@@ -69,7 +69,9 @@ export default {
   components: {
     MyFooter
   },
-
+  mounted(){
+    //   this.$store.commit('INIT_RECEIPT');  // init the vuex store
+  },
   data() {
         return {
             drawer: false,

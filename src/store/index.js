@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { EXEMPT_CATEGORIES, BASIC_TAX, IMPORT_TAX } from "@/const_goods.js";
-import { TEST_DATA } from "@/const_test_data.js";
+import { TEST_DATA, INITIAL_TESTCASE } from "@/const_test_data.js";
 
 Vue.use(Vuex);
 
@@ -11,21 +11,30 @@ export default new Vuex.Store({
     importTax: IMPORT_TAX,
     exemptCategories: EXEMPT_CATEGORIES,
 
-    currentSelectedInput: "Input 1",
+    currentSelectedInput: INITIAL_TESTCASE, // name of 1st test case
 
     // predefined input/output
-    inputs: TEST_DATA["Input 1"].inputs,
-    subtotal: TEST_DATA["Input 1"].subtotal,
-    tax: TEST_DATA["Input 1"].tax,
-    total: TEST_DATA["Input 1"].total,
+    inputs: TEST_DATA[INITIAL_TESTCASE].inputs, // test case inputs
+    subtotal: TEST_DATA[INITIAL_TESTCASE].subtotal, // test case expexted outputs
+    tax: TEST_DATA[INITIAL_TESTCASE].tax, // test case expexted outputs
+    total: TEST_DATA[INITIAL_TESTCASE].total, // test case expexted outputs
   },
 
-  getters: {},
+  //   getters: {
+  //       GET_CURRENT_SELECTED_INPUT(state){
+  //         return state.currentSelectedInput;
+  //       }
+  //  },
 
   mutations: {
-    //   INIT_RECEIPT() {
-    //     // inizializza inputs, expSubtotal, etc..
-    //   },
+    // INIT_RECEIPT(state) {
+    //   // init some state variable
+    //   state.inputs = TEST_DATA[state.currentSelectedInput].inputs;
+    //   state.subtotal = TEST_DATA[state.currentSelectedInput].subtotal;
+    //   state.tax = TEST_DATA[state.currentSelectedInput].tax;
+    //   state.total = TEST_DATA[state.currentSelectedInput].total;
+    // },
+
     SET_CURRENT_SELECTED_INPUT(state, value) {
       state.currentSelectedInput = value;
       state.inputs = TEST_DATA[value].inputs;
