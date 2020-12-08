@@ -8,7 +8,7 @@
             {{ entry.type }} 
             : {{ getSubtotal[index].toFixed(2) }} 
     </div>
-    <br>
+    
     Sales Taxes: {{ getTax.toFixed(2) }} <br>
     Total: {{ getTotal.toFixed(2) }}
 

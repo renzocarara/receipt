@@ -7,10 +7,17 @@
             {{ entry.origin!="" ? entry.origin : "" }}
             {{ entry.type }} 
             : {{ subs.subtotals[index].toFixed(2) }} 
+            <v-icon v-if="subs.subtotals[index].toFixed(2) == getSubtotal[index]" color="green">mdi-check-bold</v-icon>
+            <v-icon v-else color="red">mdi-close-thick</v-icon>
     </div>
+    <!-- c : <v-icon color="red">mdi-close-thick</v-icon> -->
+    Sales Taxes: {{ totalTax.toFixed(2) }}
+    <v-icon v-if="totalTax.toFixed(2) == getTax" color="green">mdi-check-bold</v-icon>
+    <v-icon v-else color="red">mdi-close-thick</v-icon>
     <br>
-    Sales Taxes: {{ totalTax.toFixed(2) }} <br>
     Total: {{ totalPrice.toFixed(2) }}
+    <v-icon v-if="totalPrice.toFixed(2) == getTotal" color="green">mdi-check-bold</v-icon>
+    <v-icon v-else color="red">mdi-close-thick</v-icon>
 
   </div>
 </template>
@@ -40,6 +47,10 @@ export default {
         // read from the Store the expected ouput to be comapared with computed output
         getTax(){
              return this.$store.state.tax;
+        },
+
+        getSubtotal(){
+             return this.$store.state.subtotal;
         },
 
         // read from the Store the expected ouput to be comapared with computed output
@@ -87,7 +98,7 @@ export default {
                     console.log("importTax ARROTONDATO", importTax);
                 }
                 // calculate total "import tax" for the item    
-                importTax = importTax * inputs[i].quantity;
+                importTax = ((importTax*100) * inputs[i].quantity)/100;
                 console.log("importTax x qty",importTax);
 
                 // push calculated tax in the array
