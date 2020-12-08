@@ -1,8 +1,8 @@
 <template>
   <div class="">
 
-    <h4>Computed Output</h4>
-    <div v-for="(entry, index) in getInputs" :key="index">
+    <h3>Computed Output</h3>
+    <div v-for="(entry, index) in getInputs" :key="index" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"' >
             {{ entry.quantity }}
             {{ entry.origin!="" ? entry.origin : "" }}
             {{ entry.type }} 
@@ -10,12 +10,13 @@
             <v-icon v-if="subs.subtotals[index].toFixed(2) == getSubtotal[index]" color="green">mdi-check-bold</v-icon>
             <v-icon v-else color="red">mdi-close-thick</v-icon>
     </div>
-    <!-- c : <v-icon color="red">mdi-close-thick</v-icon> -->
-    Sales Taxes: {{ totalTax.toFixed(2) }}
+
+    <strong>Sales Taxes: {{ totalTax.toFixed(2) }}</strong>
     <v-icon v-if="totalTax.toFixed(2) == getTax" color="green">mdi-check-bold</v-icon>
     <v-icon v-else color="red">mdi-close-thick</v-icon>
     <br>
-    Total: {{ totalPrice.toFixed(2) }}
+
+    <strong>Total: {{ totalPrice.toFixed(2) }}</strong>
     <v-icon v-if="totalPrice.toFixed(2) == getTotal" color="green">mdi-check-bold</v-icon>
     <v-icon v-else color="red">mdi-close-thick</v-icon>
 
@@ -23,16 +24,11 @@
 </template>
 
 <script>
-import { EXEMPT_CATEGORIES, GOODS_AND_CATEGORIES } from "@/const_goods.js";
+import { GOODS_AND_CATEGORIES } from "@/const_goods.js";
 
 export default {
   name: 'ExpectedPanel',
-//   components: {
-//   },
-//   mounted(){
-//   },
-//   data: () => ({
-//     }),
+
   methods:{
        sumArrayElements(total, num) {
                 return total + num;
@@ -75,8 +71,8 @@ export default {
                 console.log("category: ",category);
 
                 // check if the item category is not in the list of exemptions
-                if (!EXEMPT_CATEGORIES.includes(category)) {
-                    basicTax = inputs[i].price * this.$store.state.basicTax;
+                if (!this.$store.state.exemptCategories.includes(category)) {
+                    basicTax = inputs[i].price * this.$store.state.basicTax/100;
                     console.log("basicTax non arrotondato", basicTax);
 
                     // round up to the nearest 0.05
@@ -90,7 +86,7 @@ export default {
 
                 // verify if item is "imported", in case "import tax" is to be added
                 if (inputs[i].origin=="imported"){
-                    importTax = inputs[i].price * this.$store.state.importTax;
+                    importTax = inputs[i].price * this.$store.state.importTax/100;
                     console.log("imporTax non arrotondato", importTax);
 
                     // round up to the nearest 0.05
@@ -124,13 +120,6 @@ export default {
             // return the sum of all subtotals in the array
             return this.subs.subtotals.reduce(this.sumArrayElements);
             },
-
-        //  checkTotal(){
-        //      // check if computed Total is equal to expected Total
-        //      return this.totalPrice == this.getTotal;
-        //  }   
-         
-  },
-
+     },
 }
 </script>

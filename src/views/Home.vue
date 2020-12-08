@@ -56,7 +56,7 @@ export default {
   },
   mounted(){
 
-        // qui potrei fare una
+        // qui potrei fare una MEGLIO NELL APP.VUE (MOUNTED)
         // this.$store.commit('INIT_RECEIPT');
         // console.log("inputs in Store:", this.$store.state.inputs);
 

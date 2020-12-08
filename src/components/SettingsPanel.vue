@@ -1,20 +1,58 @@
 <template>
   <div class="">
 
-    <h4>Settings</h4>
+    <h3>Settings</h3>
    
-   <!-- <select-input></select-input> //???? qui o no???  -->
+    <span>Basic Tax <strong> {{basicTaxValue }}%</strong></span>
+    <v-slider
+      v-model="basicTaxValue"
+      max="30"
+      min="0"
+      :thumb-size="taxSlider.thumbSize"
+      :color="taxSlider.color"
+      :thumb-color="taxSlider.thumbColor"
+      :track-color="taxSlider.trackColor"
+      :thumb-label="taxSlider.thumbState"
+      dense
+      height="20"
+    >
+    </v-slider>
 
-    select taxes <br>
-    select exemption 
+   <span>Import Tax <strong> {{ importTaxValue }}%</strong></span>
+    <v-slider
+      v-model="importTaxValue"
+      max="20"
+      min="0"
+      :thumb-size="taxSlider.thumbSize"
+      :color="taxSlider.color"
+      :thumb-color="taxSlider.thumbColor"
+      :track-color="taxSlider.trackColor"
+      :thumb-label="taxSlider.thumbState"
+      dense
+      height="20"
+    >
+    </v-slider> 
+
+   <span>Exempted goods</span>
+    <v-select
+          v-model="exemptedGoods"
+          :items="allExemptedGoods"
+          multiple
+          chips
+          :item-color="primaryColor"
+          dense
+        >
+    </v-select>
+          <!-- label="Select"
+          hint="What are the exempted goods"
+          persistent-hint -->
+     
 
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import ComponenteProva from '@/components/ComponenteProva.vue';
-// import { GOODS } from "@/const_goods.js";
+import { EXEMPT_CATEGORIES } from "@/const_goods.js";
 
 
 export default {
@@ -26,18 +64,41 @@ export default {
 
   },
   data: () => ({
-
-        // selectableType: GOODS, // predefined inputs
-        
-    }),
+        taxSlider:
+         { color: "black", thumbColor: '#9FC500', max: 30, min: 0, thumbSize: 24, trackColor: "gray", thumbState:""},        
+        allExemptedGoods: EXEMPT_CATEGORIES,
+        primaryColor: "#9FC500"
+}),
   methods:{
    
   },
   computed: {
-        // read from the Store
-        // getInputs(){
-        //      return this.$store.state.inputs;
-        // },   
+         basicTaxValue: {
+            get() {
+                return this.$store.state.basicTax;
+            },
+            set(value) {
+                this.$store.commit('SET_BASIC_TAX', value);
+                }
+            },
+
+         importTaxValue: {
+            get() {
+                return this.$store.state.importTax;
+            },
+            set(value) {
+                this.$store.commit('SET_IMPORT_TAX', value);
+                }
+            }, 
+
+         exemptedGoods: {
+            get() {
+                return this.$store.state.exemptCategories;
+            },
+            set(value) {
+                this.$store.commit('SET_EXEMPT_CATEGORIES', value);
+                }
+            }, 
   },
 
 }

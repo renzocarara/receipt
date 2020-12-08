@@ -18,18 +18,14 @@
 
 export default {
   name: 'SelectInput',
-  components: {
-  },
+
   mounted(){
   },
+
   data: () => ({
-       
         selectableInputs: ['Input 1', 'Input 2', 'Input 3'], // predefined inputs
-       
     }),
-  methods:{
-   
-  },
+
   computed: {
         // read/write from/to the Store 
         selectedInput: {
@@ -41,6 +37,5 @@ export default {
                 }
             },
         },
-
 }
 </script>

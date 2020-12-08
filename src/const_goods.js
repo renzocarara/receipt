@@ -5,8 +5,8 @@
 //      - book
 //      - medical
 //      - other
-// "food", "book" and "medical" categories are basic tax exempt
-// "other" category is basic tax liable
+// "food", "book" and "medical" categories are "basic tax" exempt
+// "other" category is "basic tax" liable
 
 // list of goods and associated category
 export const GOODS_AND_CATEGORIES = {
@@ -22,9 +22,9 @@ export const GOODS_AND_CATEGORIES = {
 // list of all goods types
 export const GOODS = Object.keys(GOODS_AND_CATEGORIES);
 
-// goods categories exempt from basic tax
+// goods categories exempt from "basic tax"
 export const EXEMPT_CATEGORIES = ['medical','food','book'];
 
 // taxes percentage
-export const BASIC_TAX = 0.10; // 10%
-export const IMPORT_TAX = 0.05; // 5%
+export const BASIC_TAX = 10; // 10%
+export const IMPORT_TAX = 5; // 5%

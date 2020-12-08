@@ -1,16 +1,17 @@
 <template>
   <div class="">
 
-    <h4>Expected Output</h4>
-    <div v-for="(entry, index) in getInputs" :key="index">
+    <h3>Expected Output</h3>
+    <div v-for="(entry, index) in getInputs" :key="index" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>
             {{ entry.quantity }}
             {{ entry.origin!="" ? entry.origin : "" }}
             {{ entry.type }} 
-            : {{ getSubtotal[index].toFixed(2) }} 
+            : {{ getSubtotal[index].toFixed(2) }}
     </div>
     
-    Sales Taxes: {{ getTax.toFixed(2) }} <br>
-    Total: {{ getTotal.toFixed(2) }}
+    
+    <strong>Sales Taxes: {{ getTax.toFixed(2) }}</strong> <br>
+    <strong>Total: {{ getTotal.toFixed(2) }}</strong>
 
   </div>
 </template>
@@ -19,17 +20,7 @@
 
 export default {
   name: 'ExpectedPanel',
-  components: {
-  },
-  mounted(){
-
-  },
-  data: () => ({
-      
-    }),
-  methods:{
-   
-  },
+  
   computed: {
         // read from the Store
         getInputs(){
@@ -43,9 +34,11 @@ export default {
         },
         getTotal(){
              return this.$store.state.total;
-        },
-         
+        },  
   },
-
 }
 </script>
+
+<style lang="scss">
+
+</style>

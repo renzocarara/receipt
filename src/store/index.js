@@ -20,12 +20,7 @@ export default new Vuex.Store({
     total: TEST_DATA["Input 1"].total,
   },
 
-  getters: {
-      // la uso????
-    // GET_CURRENT_SELECTED_INPUT(state) {
-    //   return state.currentSelectedInput;
-    // },
-  },
+  getters: {},
 
   mutations: {
     //   INIT_RECEIPT() {
@@ -37,6 +32,18 @@ export default new Vuex.Store({
       state.subtotal = TEST_DATA[value].subtotal;
       state.tax = TEST_DATA[value].tax;
       state.total = TEST_DATA[value].total;
+    },
+
+    SET_BASIC_TAX(state, value) {
+      state.basicTax = value;
+    },
+
+    SET_IMPORT_TAX(state, value) {
+      state.importTax = value;
+    },
+
+    SET_EXEMPT_CATEGORIES(state, value) {
+      state.exemptCategories = value;
     },
   },
 });
