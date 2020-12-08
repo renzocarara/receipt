@@ -1,11 +1,11 @@
 # RECEIPT
 
 ## Overview
-This readme file gives you instructions how to download, compile and run this application on your own machine.
+This readme file gives you instructions how to download, compile and run this application on your own machine.\
 NOTE: you needs to have [npm](https://nodejs.org/en/) istalled on your machine.
 
 ## Download sources
-From GitHub page, click on the "Code" green button and select "download zip".
+From this page, click on the "Code" green button and select **Download ZIP**.\
 Unzip the downloaded file and from your command line move into the created directory where files
 has been placed.
 
