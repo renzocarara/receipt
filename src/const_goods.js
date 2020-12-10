@@ -19,6 +19,9 @@ export const GOODS_AND_CATEGORIES = {
          book: "book",
        };
 
+// possible origins of the goods
+export const ORIGINS = [ "local", "imported"];
+
 // list of all goods types
 export const GOODS = Object.keys(GOODS_AND_CATEGORIES);
 

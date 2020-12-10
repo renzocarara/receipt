@@ -3,22 +3,29 @@
 
     <h3>Computed Output</h3>
     <div v-for="(entry, index) in getInputs" :key="index" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"' >
-            {{ entry.quantity }}
-            {{ entry.origin!="" ? entry.origin : "" }}
-            {{ entry.type }} 
-            : {{ subs.subtotals[index].toFixed(2) }} 
-            <v-icon v-if="subs.subtotals[index].toFixed(2) == getSubtotal[index]" color="green">mdi-check-bold</v-icon>
+        {{ entry.quantity }}
+        {{ entry.origin!="" ? entry.origin : "" }}
+        {{ entry.type }} 
+        : {{ subs.subtotals[index].toFixed(2) }}
+        <template  v-if="doCheck" >
+            <v-icon v-if="subs.subtotals[index].toFixed(2) == getSubtotal[index].toFixed(2)" color="green">mdi-check-bold</v-icon>
             <v-icon v-else color="red">mdi-close-thick</v-icon>
+        </template> 
     </div>
 
     <strong>Sales Taxes: {{ totalTax.toFixed(2) }}</strong>
-    <v-icon v-if="totalTax.toFixed(2) == getTax" color="green">mdi-check-bold</v-icon>
-    <v-icon v-else color="red">mdi-close-thick</v-icon>
+    <template v-if="this.$store.state.checkExpectedOutput == true">
+        <v-icon v-if="totalTax.toFixed(2) == getTax" color="green">mdi-check-bold</v-icon>
+        <v-icon v-else color="red">mdi-close-thick</v-icon>
+    </template> 
     <br>
 
     <strong>Total: {{ totalPrice.toFixed(2) }}</strong>
-    <v-icon v-if="totalPrice.toFixed(2) == getTotal" color="green">mdi-check-bold</v-icon>
-    <v-icon v-else color="red">mdi-close-thick</v-icon>
+    <template v-if="this.$store.state.checkExpectedOutput == true">
+        <v-icon v-if="totalPrice.toFixed(2) == getTotal" color="green">mdi-check-bold</v-icon>
+        <v-icon v-else color="red">mdi-close-thick</v-icon>
+    </template> 
+
 
   </div>
 </template>
@@ -35,28 +42,31 @@ export default {
             }
   },
  computed: {
+        // indicates if check between input and expected output have to be done
+        // when input is chanaged by user (add/delete entries) this check is not performed
+        doCheck(){
+            return this.$store.state.checkExpectedOutput;
+        },
         // read from the Store the predefined input
         getInputs(){
              return this.$store.state.inputs;
         },
-
         // read from the Store the expected ouput to be comapared with computed output
         getTax(){
              return this.$store.state.tax;
         },
-
+        // read from the Store the expected ouput to be comapared with computed output
         getSubtotal(){
              return this.$store.state.subtotal;
         },
-
         // read from the Store the expected ouput to be comapared with computed output
         getTotal(){
              return this.$store.state.total;
         },
 
         // calculate the output, return an object with 2 arrays
-        // one for the taxes values to be added to every single subtotal
-        // one with every single subtotals with taxes already added
+        // one for the taxes values for every single subtotal
+        // one with every single subtotal with taxes already added
         subs(){
             let inputs = this.getInputs; 
             let subtotals=[]; // store subtotals with taxes already added

@@ -19,7 +19,7 @@
                             >Vue.js
                         </a>. <br>
                         There's no persitency of data.  No backend is implemented. <br>
-                        A Frontend plus some logic do the work. Some predefined Test Data (inputs and expected outputs) is hard-coded. <br>
+                        A Frontend plus some logic do the work. Some predefined Test Data (inputs and expected outputs) are hard-coded. <br>
                        
                     </p>
                     <h4>HOW IT WORKS</h4>
@@ -34,8 +34,11 @@
                             <li>Settings</li>
                         </ul>
                         <br>
-                        Input Test Data can be selected through a specific field. <br>
-                        Through the Settings Panel is possible to vary some parameters used to computes the results.
+                        Input Panel presents Test Data that can be selected through a specific field. <br>
+                        Expected Output presents hardcoded data related to the selected Input <br>
+                        Computed Output presents the data calculated on the selected Input <br>
+                        Settings gives the possibility to vary some parameters used to computes the results. 
+
                     </p>
                     
                     

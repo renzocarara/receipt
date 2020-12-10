@@ -2,9 +2,18 @@
   <div class="">
 
     <v-row>
-        <v-col cols="6" md="2" sm="3">
+        <v-col cols="6"  sm="3" md="3">
+            <v-card height="100%" class="mx-auto px-4 py-4">
             <select-input></select-input>
+            </v-card>
         </v-col>
+        <v-col cols="12" md="9">
+
+            <v-card height="100%" class="mx-auto px-4 py-4">
+            <add-item></add-item>
+            </v-card>
+        </v-col>
+
     </v-row>
 
     <v-row>
@@ -43,6 +52,7 @@ import ExpectedPanel from '@/components/ExpectedPanel.vue';
 import ComputedPanel from '@/components/ComputedPanel.vue';
 import SettingsPanel from '@/components/SettingsPanel.vue';
 import SelectInput from '@/components/SelectInput.vue';
+import AddItem from '@/components/AddItem.vue';
 
 
 export default {
@@ -52,7 +62,8 @@ export default {
       ExpectedPanel,
       ComputedPanel,
       SettingsPanel,
-      SelectInput
+      SelectInput,
+      AddItem
   },
   
   data: () => ({
