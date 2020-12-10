@@ -1,16 +1,16 @@
 <template>
-  <div class="">
+  <v-container>
 
     <v-row>
         <v-col cols="6"  sm="3" md="3">
             <v-card height="100%" class="mx-auto px-4 py-4">
-            <select-input></select-input>
+                <select-input></select-input>
             </v-card>
         </v-col>
         <v-col cols="12" md="9">
 
             <v-card height="100%" class="mx-auto px-4 py-4">
-            <add-item></add-item>
+                <add-item></add-item>
             </v-card>
         </v-col>
 
@@ -42,7 +42,7 @@
         </v-col>
     </v-row>
 
-  </div>
+  </v-container>
 </template>
 
 <script>

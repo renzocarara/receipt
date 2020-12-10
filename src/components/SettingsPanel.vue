@@ -2,7 +2,7 @@
   <div class="">
 
     <div class="d-flex justify-space-between">
-    <h3>Settings</h3> 
+    <h4>Settings</h4> 
     <v-btn class=""
             x-small
             color="#9FC500"
@@ -51,11 +51,7 @@
           dense
           deletable-chips
         >
-    </v-select>
-          <!-- label="Select"
-          hint="What are the exempted goods"
-          persistent-hint -->
-     
+    </v-select> 
 
   </div>
 </template>
@@ -63,15 +59,9 @@
 <script>
 import { BASIC_TAX, IMPORT_TAX, EXEMPT_CATEGORIES } from "@/const_goods.js";
 
-
 export default {
   name: 'SettingsPanel',
-  components: {
-    //   ComponenteProva,
-  },
-  mounted(){
-
-  },
+ 
   data: () => ({
         taxSlider:
          { color: "black", thumbColor: '#9FC500', max: 30, min: 0, thumbSize: 24, trackColor: "gray", thumbState:""},        

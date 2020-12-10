@@ -17,7 +17,7 @@
             <v-icon v-else color="red">mdi-close-thick</v-icon>
         </template> 
     </div>
-
+    <br>
     <strong>Sales Taxes: {{ totalTax.toFixed(2) }}</strong>
     <template v-if="this.$store.state.checkExpectedOutput == true">
         <v-icon v-if="totalTax.toFixed(2) == getTax" color="green">mdi-check-bold</v-icon>
@@ -79,7 +79,7 @@ export default {
              return this.$store.state.total;
         },
 
-        // calculate the output, return an object with 2 arrays
+        // compute the output, return an object with 2 arrays
         // one for the taxes values for every single subtotal
         // one with every single subtotal with taxes already added
         subs(){
@@ -131,28 +131,28 @@ export default {
                 console.log("subtotals[i] tassato: ",inputs[i].price * inputs[i].quantity + subTax[i]);
             }
             
-            return {subtotals, subTax};
+            return {subtotals, subTax}; 
             }, 
 
-        // calculate the output    
+        // calculate the output  "Sales taxes"   
         totalTax() {
              if (this.subs.subTax.length){
                 // return the sum of all subtotals in the array
                 return this.subs.subTax.reduce(this.sumArrayElements);            
             } else{
                 // empty array
-                return 0;
+                return 0; // the input panel has no entries
             }
         },
 
-        // calculate the output    
+        // calculate the output  "Total"  
         totalPrice() {
             if (this.subs.subtotals.length){
                 // return the sum of all subtotals in the array
                 return this.subs.subtotals.reduce(this.sumArrayElements);
             } else{
                 // empty array
-                return 0;
+                return 0; // the input panel has no entries
             }
         },
      },

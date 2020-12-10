@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div :class="this.$store.state.checkExpectedOutput ? '' : 'grayed'">
 
     <h3>Expected Output</h3>
 
@@ -15,7 +15,7 @@
             : {{ getSubtotal[index].toFixed(2) }}
         </div>
         
-        
+        <br>
         <strong>Sales Taxes: {{ getTax.toFixed(2) }}</strong> <br>
         <strong>Total: {{ getTotal.toFixed(2) }}</strong><br>
         <small>Basic Tax:10%  Import Tax:5%</small><br>
@@ -46,7 +46,6 @@ export default {
   },
 
   computed: {
-        // read from the Store
         getInputs(){
              return this.$store.state.inputs;
         },
@@ -62,7 +61,8 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
-
+.grayed{
+    color: $gray-color;
+    }
 </style>

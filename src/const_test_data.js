@@ -68,13 +68,12 @@ export const TEST_DATA = {
            tax: 7.9,
            total: 98.38,
          },
-       };
 
-export const INITIAL_TESTCASE = Object.keys(TEST_DATA)[0];  // name of the 1st test case
+         // /////////////////////////////////////////////
+         // // INSERT HERE MORE HARDCODED TEST DATA... //
+         // /////////////////////////////////////////////
 
-
-  // //////////////////////////////////////////
-  // // INSERT HERE MORE HARDCODED TEST DATA...
-  // //////////////////////////////////////////
-
+       }; 
+       
+       export const INITIAL_TESTCASE = Object.keys(TEST_DATA)[0];  // name of the 1st test case
   

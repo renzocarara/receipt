@@ -4,14 +4,6 @@
     <v-form v-model="validity" ref="form">
 
         <h4>Add new item</h4>
-
-        <v-btn class=""
-            :disabled="!validity"
-            color="#9FC500"
-            @click="addItem">
-        ADD 
-        </v-btn>
-
         <v-row>
             <v-col cols="12" sm="6" md="2">
                 <v-text-field
@@ -60,25 +52,24 @@
             </v-col>
         </v-row>
 
-    </v-form>
+        <v-btn class=""
+            :disabled="!validity"
+            color="#9FC500"
+            @click="addItem">
+        ADD 
+        </v-btn>
 
+    </v-form>
 
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import { GOODS, ORIGINS } from "@/const_goods.js";
-
 
 export default {
   name: 'AddItem',
-  components: {
-  },
-  mounted(){
-
-  },
-
+ 
   methods:{
       addItem() {
 
@@ -86,10 +77,7 @@ export default {
           // it's no more applicable because input has been changed and expected output is hard-coded
           this.$store.commit('SET_CHECK_EXPECTED_OUTPUT', false);  
 
-          console.log("add clicked!!");
-          console.log("this.customInputs",this.customInputs);
-
-        // normalize data format
+            // normalize data format
           if (this.customInputs.origin == "local") this.customInputs.origin = ""; 
           this.customInputs.quantity = parseInt(this.customInputs.quantity); 
           this.customInputs.price = parseFloat(this.customInputs.price); 
@@ -97,16 +85,15 @@ export default {
           this.$store.commit('ADD_ENTRY', this.customInputs);  // update the STORE
 
           // reset input fields
-           //this.customInputs = {quantity: 1, origin: "", type:"book", price: "1.00"}
+          //this.customInputs = {quantity: 1, origin: "", type:"book", price: "1.00"}
 
       }
   },
   data: () => ({
-    selectableType: GOODS, // 
-    selectableOrigin: ORIGINS, // 
+    selectableType: GOODS, //  types of goods
+    selectableOrigin: ORIGINS, //  origin of goods
     
-    customInputs:  {quantity: 1, origin: "", type:"", price: "1.00"},
-    
+    customInputs:  {quantity: 1, origin: "", type:"", price: "1.00"}, // initial value
 
     validity: false, // check form validity
     quantityRules: [
@@ -129,11 +116,8 @@ export default {
 
     typeRules: [
      v => !!v || '',
-    
      ]
-     
     
     }),
-
 }
 </script>

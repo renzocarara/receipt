@@ -23,41 +23,39 @@
         <v-spacer></v-spacer>
 
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-    </v-app-bar>
+   </v-app-bar>
 
-        <v-navigation-drawer v-model="drawer" right app temporary>
-            <v-list nav dense>
-                <v-list-item-group v-model="group" active-class="green--text text--darken-4">
-                <v-list-item>
-                    <v-list-item-icon>
-                    <v-icon>mdi-home</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title><router-link to="/">Home</router-link></v-list-item-title>
-                </v-list-item>
+    <v-navigation-drawer v-model="drawer" right app temporary>
+        <v-list nav dense>
+            <v-list-item-group v-model="group" active-class="green--text text--darken-4">
+            <v-list-item>
+                <v-list-item-icon>
+                <v-icon>mdi-home</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title><router-link to="/">Home</router-link></v-list-item-title>
+            </v-list-item>
 
-                <v-list-item>
-                    <v-list-item-icon>
-                    <v-icon>mdi-information</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title><router-link to="/about">About</router-link></v-list-item-title>
-                </v-list-item>
-                </v-list-item-group>
-            </v-list>
-        </v-navigation-drawer>
+            <v-list-item>
+                <v-list-item-icon>
+                <v-icon>mdi-information</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title><router-link to="/about">About</router-link></v-list-item-title>
+            </v-list-item>
+            </v-list-item-group>
+        </v-list>
+    </v-navigation-drawer>
 
-        <v-main>
+    <v-main>
 
-            <v-container>
-                <!-- <transition name="fade" mode="out-in" appear> -->
-                    <router-view></router-view>
-                <!-- </transition> -->
-            </v-container>  
+        <transition name="fade" mode="out-in" appear>
+            <router-view/>
+        </transition>
 
-        </v-main>
+    </v-main>
 
-        <MyFooter/>
+    <MyFooter/>
 
-    </v-app>
+  </v-app>
 </template>
 
 <script>

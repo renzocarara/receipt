@@ -1,9 +1,7 @@
 <template>
-  <div class="">
-  
-<!-- <v-layout> -->
-        <v-flex>
-            <v-card class="mx-auto view-port" width="800" color="">
+  <v-container>
+        <v-flex class="my-3">
+            <v-card class="py-5 mx-auto" width="800">
                 <v-card-text class="pb-0">
                     <h4>VERSION</h4>
                     <p>
@@ -11,33 +9,49 @@
                     </p>
                     <h4>SCOPE</h4>
                     <p>
-                        This app is an exercise. It has been developed using 
+                        This app is an exercise. It has been developed using
                         <a
                             href="https://vuejs.org/"
                             target="_blank"
                             rel="noopener noreferrer"
                             >Vue.js
+                        </a> and <a
+                            href="https://vuetifyjs.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Vuetify.js
                         </a>. <br>
-                        There's no persitency of data.  No backend is implemented. <br>
-                        A Frontend plus some logic do the work. Some predefined Test Data (inputs and expected outputs) are hard-coded. <br>
                        
                     </p>
                     <h4>HOW IT WORKS</h4>
                     <p>
-                         It takes some predefined input data and provides a computed output (receipt).
-                         The computed output is compared to the expected output to check correctness. <br>
-                         The main page shows 4 panels:
+                         It takes some predefined input data (list of items to be purchased) and provides a computed output (the calculated receipt).
+                         Some Test Case Data are provided as input and expected output. These data are hardcoded in the app code. <br>
+                         The computed receipt is compared with the expected receipt to verify the correctness of the program. <br><br>
+    
+                        There's no persitency of data.  No real backend is implemented. A Frontend plus some logic do the work.  <br><br>
+                        
+                        User can create custom inputs, inserting entries from "Add new item" panel or deleting the entries in the Input panel <br>
+                        User can furthermore customize inputs changing some common values from the Settings panel. <br>
+                        NOTE: if user provide a custom input, adding or deleting entries, the check between input and expected output is disabled. <br><br>
+                        
+                        The main page shows 6 panels:
                         <ul>
-                            <li>Input</li>
-                            <li>Expected Output</li>
-                            <li>Computed Output</li>
-                            <li>Settings</li>
+                            <li><strong>Select Input</strong></li>
+                            <li><strong>Add new item</strong></li>
+                            <li><strong>Input</strong></li>
+                            <li><strong>Expected Output</strong></li>
+                            <li><strong>Computed Output</strong></li>
+                            <li><strong>Settings</strong></li>
                         </ul>
+                        
                         <br>
-                        Input Panel presents Test Data that can be selected through a specific field. <br>
-                        Expected Output presents hardcoded data related to the selected Input <br>
-                        Computed Output presents the data calculated on the selected Input <br>
-                        Settings gives the possibility to vary some parameters used to computes the results. 
+                        <strong>Select Input</strong> permits to select one of the predefined Test Case <br>
+                        <strong>Add new item</strong> permits to add an entry in the list of inputs <br>
+                        <strong>Input</strong> presents data to be used for calculations <br>
+                        <strong>Expected Output</strong> presents hardcoded data related to the selected Input <br>
+                        <strong>Computed Output</strong> presents the data calculated onto the Input data <br>
+                        <strong>Settings</strong> gives the possibility to vary some parameters used to computes the results. <br>
 
                     </p>
                     
@@ -45,9 +59,9 @@
                     <h4>TECHNOLOGIES</h4>
                     <ul>
                         <li>VUE-CLI v4.5.9</li>
-                        <li>VUE.JS v2.6.11</li>
+                        <li>VUE v2.6.11</li>
                         <li>VUEX v3.6.0</li>
-                        <li>VUE-ROUTER.JS v3.4.9</li>
+                        <li>VUE-ROUTER v3.4.9</li>
                         <li>VUETIFY v2.3.10</li>
                     </ul>
                     <br />
@@ -69,7 +83,6 @@
 
                 </v-card-text>
                 
-                
                 <hr class="my-3" />
                 <v-card-actions>
                     <v-spacer />
@@ -79,16 +92,13 @@
                 </v-card-actions>
             </v-card>
         </v-flex>
-    <!-- </v-layout> -->
-      </div>
-
+    </v-container>
 </template>
 
 <script>
 
 export default {
     name: "About",
-    
 };
 </script>
 
@@ -102,11 +112,6 @@ h4 {
     height: 35px;
     vertical-align: text-bottom;
 }
-.vert-align-base {
-    vertical-align: baseline;
-}
-.version {
-    font-size: 20px;
-}
+
 </style>
 
