@@ -14,20 +14,30 @@
                 min="1"
                 max="100"
                 outlined
-                
                 />
             </v-col>
-            <v-col cols="12" sm="6" md="3">
-                <v-select class=""
-                    label="Origin"
-                    v-model="customInputs.origin"
-                    :items="selectableOrigin"
-                    dense
-                    outlined
-                    >
-                </v-select> 
+
+            <v-col cols="12" sm="6" md="2">
+            <v-radio-group
+                v-model="customInputs.origin"
+                column
+                mandatory
+                >
+                <v-radio
+                    label="Local"
+                    value="local"
+                    color="#9FC500"
+
+                ></v-radio>
+                <v-radio
+                    label="Import"
+                    value="imported"
+                    color="#9FC500"
+                ></v-radio>
+            </v-radio-group>
             </v-col>
-            <v-col cols="12" sm="6" md="5">
+
+            <v-col cols="12" sm="6" md="6">
                 <v-select class="" 
                     label="Type of goods"
                     v-model="customInputs.type"
@@ -38,6 +48,7 @@
                     >
                 </v-select> 
             </v-col>
+            
             <v-col cols="12" sm="6" md="2">
                 <v-text-field
                     v-model="customInputs.price"
@@ -121,3 +132,11 @@ export default {
     }),
 }
 </script>
+
+<style lang="scss" scoped>
+
+::v-deep .v-input--selection-controls {
+    margin-top: 0;
+    padding-top: 0;
+}
+</style>

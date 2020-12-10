@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <v-container  class="my-5 bgc-main">
         <v-flex class="my-5">
-            <v-card class="mx-auto" width="800">
+            <v-card class="mx-auto">
                     <v-img
                          height="250"
                          src="https://cdn.pixabay.com/photo/2015/08/07/16/07/shopping-879498_960_720.jpg"

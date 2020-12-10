@@ -1,3 +1,4 @@
+
 .bgc-stripe-1{
     background-color: $bgc-stripe-1-color;
 }
@@ -6,6 +7,9 @@
     background-color: $bgc-stripe-2-color;
 }
 
+.bgc-main {
+    background-color: $bgc-stripe-1-color;
+}
 
 // --------------------------- TRANSITIONs -----------------------------------
 // transizione in ingresso, per apparire gradualmente

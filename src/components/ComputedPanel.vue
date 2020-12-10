@@ -93,42 +93,33 @@ export default {
 
                 // verify if item is exempt otherwise "basic tax" is to be added
                 let category = GOODS_AND_CATEGORIES[inputs[i].type];
-                console.log("category: ",category);
 
                 // check if the item category is not in the list of exemptions
                 if (!this.$store.state.exemptCategories.includes(category)) {
                     basicTax = inputs[i].price * this.$store.state.basicTax/100;
-                    console.log("basicTax non arrotondato", basicTax);
 
                     // round up to the nearest 0.05
                     basicTax = (Math.ceil(basicTax*20)/20).toFixed(2);
-                    console.log("basicTax ARROTONDATO", basicTax);
                 
                 }
                 // calculate total "basic tax" for the item    
                 basicTax = basicTax * inputs[i].quantity;
-                console.log("basicTax x qty", basicTax);
 
                 // verify if item is "imported", in case "import tax" is to be added
                 if (inputs[i].origin=="imported"){
                     importTax = inputs[i].price * this.$store.state.importTax/100;
-                    console.log("imporTax non arrotondato", importTax);
 
                     // round up to the nearest 0.05
                     importTax = (Math.ceil(importTax*20)/20).toFixed(2);
-                    console.log("importTax ARROTONDATO", importTax);
                 }
                 // calculate total "import tax" for the item    
                 importTax = ((importTax*100) * inputs[i].quantity)/100;
-                console.log("importTax x qty",importTax);
 
                 // push calculated tax in the array
                 subTax.push(basicTax + importTax);
-                console.log("subTax[i] basic+import",subTax[i]);
 
                 // push calculated subtotal plus taxes in the array
                 subtotals.push(inputs[i].price * inputs[i].quantity + subTax[i]);
-                console.log("subtotals[i] tassato: ",inputs[i].price * inputs[i].quantity + subTax[i]);
             }
             
             return {subtotals, subTax}; 

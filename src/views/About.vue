@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <v-container  class="my-5 bgc-main">
         <v-flex class="my-3">
-            <v-card class="py-5 mx-auto" width="800">
+            <v-card class="py-5 mx-auto">
                 <v-card-text class="pb-0">
                     <h4>VERSION</h4>
                     <p>
@@ -25,7 +25,7 @@
                     </p>
                     <h4>HOW IT WORKS</h4>
                     <p>
-                         It takes some predefined input data (list of items to be purchased) and provides a computed output (the calculated receipt).
+                         It takes some predefined input data (list of items to be purchased) and provides a computed output (the calculated receipt). <br>
                          Some Test Case Data are provided as input and expected output. These data are hardcoded in the app code. <br>
                          The computed receipt is compared with the expected receipt to verify the correctness of the program. <br><br>
     
