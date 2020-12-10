@@ -1,8 +1,16 @@
 <template>
   <div class="">
 
-    <h3>Settings</h3>
-   
+    <div class="d-flex justify-space-between">
+    <h3>Settings</h3> 
+    <v-btn class=""
+            x-small
+            color="#9FC500"
+            @click="resetDefaults">
+        Defaults 
+    </v-btn>
+    </div>
+    <!-- <br> -->
     <span>Basic Tax <strong> {{basicTaxValue }}%</strong></span>
     <v-slider
       v-model="basicTaxValue"
@@ -33,14 +41,15 @@
     >
     </v-slider> 
 
-   <span>Exempted goods</span>
+   <span>Exempted goods <small>(no Basic Tax applied)</small></span>
     <v-select
           v-model="exemptedGoods"
           :items="allExemptedGoods"
           multiple
           chips
-          :item-color="primaryColor"
+          item-color="#9FC500"
           dense
+          deletable-chips
         >
     </v-select>
           <!-- label="Select"
@@ -52,7 +61,7 @@
 </template>
 
 <script>
-import { EXEMPT_CATEGORIES } from "@/const_goods.js";
+import { BASIC_TAX, IMPORT_TAX, EXEMPT_CATEGORIES } from "@/const_goods.js";
 
 
 export default {
@@ -67,10 +76,13 @@ export default {
         taxSlider:
          { color: "black", thumbColor: '#9FC500', max: 30, min: 0, thumbSize: 24, trackColor: "gray", thumbState:""},        
         allExemptedGoods: EXEMPT_CATEGORIES,
-        primaryColor: "#9FC500"
 }),
   methods:{
-   
+      resetDefaults(){
+            this.$store.commit('SET_BASIC_TAX', BASIC_TAX); 
+            this.$store.commit('SET_IMPORT_TAX', IMPORT_TAX);
+            this.$store.commit('SET_EXEMPT_CATEGORIES', EXEMPT_CATEGORIES);
+     }
   },
   computed: {
          basicTaxValue: {

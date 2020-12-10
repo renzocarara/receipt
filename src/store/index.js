@@ -15,7 +15,7 @@ export default new Vuex.Store({
     importTax: IMPORT_TAX,
     exemptCategories: EXEMPT_CATEGORIES, // list of goods exempted from basic tax
 
-    currentSelectedInput: INITIAL_TESTCASE, 
+    currentSelectedInput: INITIAL_TESTCASE,
     checkExpectedOutput: true, // enable checks between input and expected output
 
     // predefined input
@@ -28,7 +28,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-
     SET_CURRENT_SELECTED_INPUT(state, value) {
       state.currentSelectedInput = value;
 
@@ -51,7 +50,6 @@ export default new Vuex.Store({
         "\n\n"
       );
 
-
       // create a clone to copy data in the STORE variable
       let clone = JSON.parse(JSON.stringify(TEST_DATA));
       state.inputs = clone[value].predefinedInputs;
@@ -71,7 +69,7 @@ export default new Vuex.Store({
 
     ADD_ENTRY(state, value) {
       console.log("nello store value:", value);
-      let {quantity, origin, type, price} = value;  // destructure received object
+      let { quantity, origin, type, price } = value; // destructure received object
 
       console.log(
         "\nADD PRIMA: TEST_DATA['Input 2'].predefinedInputs:",
@@ -80,8 +78,8 @@ export default new Vuex.Store({
       );
 
       state.inputs.push({ quantity, origin, type, price });
-    //   state.inputs.push(value);
-   
+      //   state.inputs.push(value);
+
       console.log(
         "\nADD DOPO: TEST_DATA['Input 2'].predefinedInputs:",
         TEST_DATA["Input 2"].predefinedInputs,
@@ -89,6 +87,11 @@ export default new Vuex.Store({
       );
 
       console.log("\nADD state.inputs:", state.inputs, "\n\n");
+    },
+
+    REMOVE_ENTRY(state, index) {
+      // remove 1 element from 'index' position 1
+      state.inputs.splice(index, 1);
     },
 
     SET_CHECK_EXPECTED_OUTPUT(state, value) {

@@ -4,11 +4,15 @@
     <h3>Expected Output</h3>
 
     <div  v-if="this.$store.state.checkExpectedOutput == true" >
-        <div v-for="(entry, index) in getInputs" :key="index" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>
-                {{ entry.quantity }}
-                {{ entry.origin!="" ? entry.origin : "" }}
-                {{ entry.type }} 
-                : {{ getSubtotal[index].toFixed(2) }}
+        <div v-for="(entry, index) in getInputs" :key="index" class="pl-2" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>
+            <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
+            <v-icon v-if="isFood(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-food</v-icon>
+            <v-icon v-if="isBook(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-book-open-page-variant</v-icon>
+            
+            {{ entry.quantity }}
+            {{ entry.origin!="" ? entry.origin : "" }}
+            {{ entry.type }} 
+            : {{ getSubtotal[index].toFixed(2) }}
         </div>
         
         
@@ -24,10 +28,23 @@
 </template>
 
 <script>
+import { GOODS_AND_CATEGORIES } from "@/const_goods.js";
 
 export default {
   name: 'ExpectedPanel',
   
+  methods: {
+      isMedical(type){
+         return GOODS_AND_CATEGORIES[type]=='medical';
+      },
+      isFood(type){
+         return GOODS_AND_CATEGORIES[type]=='food';
+      },
+      isBook(type){
+         return GOODS_AND_CATEGORIES[type]=='book';
+      },
+  },
+
   computed: {
         // read from the Store
         getInputs(){

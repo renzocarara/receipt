@@ -2,11 +2,16 @@
   <div class="">
 
     <h3>Computed Output</h3>
-    <div v-for="(entry, index) in getInputs" :key="index" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"' >
+    <div v-for="(entry, index) in getInputs" :key="index" class="pl-2" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"' >
+        <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
+        <v-icon v-if="isFood(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-food</v-icon>
+        <v-icon v-if="isBook(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-book-open-page-variant</v-icon>
+
         {{ entry.quantity }}
         {{ entry.origin!="" ? entry.origin : "" }}
         {{ entry.type }} 
         : {{ subs.subtotals[index].toFixed(2) }}
+
         <template  v-if="doCheck" >
             <v-icon v-if="subs.subtotals[index].toFixed(2) == getSubtotal[index].toFixed(2)" color="green">mdi-check-bold</v-icon>
             <v-icon v-else color="red">mdi-close-thick</v-icon>
@@ -37,9 +42,19 @@ export default {
   name: 'ExpectedPanel',
 
   methods:{
-       sumArrayElements(total, num) {
-                return total + num;
-            }
+      // used to call reduce() on arrays (return the sum of all elements)
+      sumArrayElements(total, num) {
+         return total + num;
+      },
+      isMedical(type){
+         return GOODS_AND_CATEGORIES[type]=='medical';
+      },
+      isFood(type){
+         return GOODS_AND_CATEGORIES[type]=='food';
+      },
+      isBook(type){
+         return GOODS_AND_CATEGORIES[type]=='book';
+      },
   },
  computed: {
         // indicates if check between input and expected output have to be done
@@ -121,15 +136,25 @@ export default {
 
         // calculate the output    
         totalTax() {
-            // return the sum of all subtotals in the array
-            return this.subs.subTax.reduce(this.sumArrayElements);            
-            },
+             if (this.subs.subTax.length){
+                // return the sum of all subtotals in the array
+                return this.subs.subTax.reduce(this.sumArrayElements);            
+            } else{
+                // empty array
+                return 0;
+            }
+        },
 
         // calculate the output    
         totalPrice() {
-            // return the sum of all subtotals in the array
-            return this.subs.subtotals.reduce(this.sumArrayElements);
-            },
+            if (this.subs.subtotals.length){
+                // return the sum of all subtotals in the array
+                return this.subs.subtotals.reduce(this.sumArrayElements);
+            } else{
+                // empty array
+                return 0;
+            }
+        },
      },
 }
 </script>
