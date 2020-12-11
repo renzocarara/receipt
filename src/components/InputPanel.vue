@@ -3,15 +3,15 @@
 
     <h3>Input</h3>
     <div v-for="(entry, index) in getInputs" :key="index" class="pl-1" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>
-            <v-icon class="trash trash-hover mr-2" @click="removeItem(index)">mdi-trash-can-outline</v-icon> 
-            <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
-            <v-icon v-if="isFood(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-food</v-icon>
-            <v-icon v-if="isBook(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-book-open-page-variant</v-icon>
-            
-            {{ entry.quantity }}
-            {{ entry.origin!="" ? entry.origin : "" }}
-            {{ entry.type }} 
-            at {{ entry.price.toFixed(2) }} 
+        <v-icon class="trash trash-hover mr-2" @click="removeItem(index)">mdi-trash-can-outline</v-icon> 
+        <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
+        <v-icon v-if="isFood(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-food</v-icon>
+        <v-icon v-if="isBook(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-book-open-page-variant</v-icon>
+        
+        {{ entry.quantity }}
+        {{ entry.origin!="" ? entry.origin : "" }}
+        {{ entry.type }} 
+        at {{ entry.price.toFixed(2) }} 
     </div>
 
   </div>

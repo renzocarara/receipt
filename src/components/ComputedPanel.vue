@@ -55,8 +55,26 @@ export default {
       isBook(type){
          return GOODS_AND_CATEGORIES[type]=='book';
       },
-  },
- computed: {
+      nDecimals(number, n){
+          // DESCRIPTION:
+          // receive 2 parameters, the number to be truncated and the number of decimals
+          // return a number with max "n" decimals
+          // similar to toFixed() function but with no rounding
+          // toFixed():  (34.678).toFixed(2)  --->   34.68
+          // nDecimals(34.678, 2)  --->  34.67
+          let decimals ="";
+          let string = number.toString();
+          let pointPosition = string.indexOf('.');
+          if(pointPosition!=-1){ // number with some decimals
+            decimals = string.slice(pointPosition+1, pointPosition+n+1); // extract max "n" chars
+                // extract the integer part and concatenates it with decimal part
+                return  parseFloat(string.slice(0, pointPosition) + '.' + decimals); 
+          } else { // number with no decimals
+                return number; 
+          }
+        }
+   },
+  computed: {
         // indicates if check between input and expected output have to be done
         // when input is chanaged by user (add/delete entries) this check is not performed
         doCheck(){
@@ -96,21 +114,33 @@ export default {
 
                 // check if the item category is not in the list of exemptions
                 if (!this.$store.state.exemptCategories.includes(category)) {
-                    basicTax = inputs[i].price * this.$store.state.basicTax/100;
+
+                    // NOTE: consider only 2 decimals on calculated tax, so if it is less than 0.01
+                    // (i.e 0.005, 0.001, etc) value is considered as 0.00
+                    // NOTE2: toFixed() applies a rounding before truncate, so at example:
+                    // 0.001.toFixed(2) ---> 0.00
+                    // 0.007.toFixed(2) ---> 0.01  rounded!!
+                    basicTax = (inputs[i].price * this.$store.state.basicTax/100);
+
+                    // insteaad of toFixed() use a custom function that keep decimals as they are, no rounding
+                    basicTax = this.nDecimals(basicTax,2); // keeps 2 decimals
 
                     // round up to the nearest 0.05
                     basicTax = (Math.ceil(basicTax*20)/20).toFixed(2);
-                
                 }
-                // calculate total "basic tax" for the item    
-                basicTax = basicTax * inputs[i].quantity;
+                    // calculate total "basic tax" for the item    
+                    basicTax = basicTax * inputs[i].quantity;
 
-                // verify if item is "imported", in case "import tax" is to be added
-                if (inputs[i].origin=="imported"){
-                    importTax = inputs[i].price * this.$store.state.importTax/100;
+                    // verify if item is "imported", in case "import tax" is to be added
+                    if (inputs[i].origin=="imported"){
+                        // NOTE: consider only 2 decimals on calculated tax, so if it is less than 0.01
+                        // (i.e 0.005, 0.001, etc) value is considered as 0 (tax applied will be zero)
+                        importTax = (inputs[i].price * this.$store.state.importTax/100);
 
-                    // round up to the nearest 0.05
-                    importTax = (Math.ceil(importTax*20)/20).toFixed(2);
+                        importTax = this.nDecimals(importTax,2); // keeps 2 decimals
+
+                        // round up to the nearest 0.05
+                        importTax = (Math.ceil(importTax*20)/20).toFixed(2);
                 }
                 // calculate total "import tax" for the item    
                 importTax = ((importTax*100) * inputs[i].quantity)/100;

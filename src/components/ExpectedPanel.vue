@@ -1,4 +1,5 @@
 <template>
+
   <div :class="this.$store.state.checkExpectedOutput ? '' : 'grayed'">
 
     <h3>Expected Output</h3>
@@ -24,7 +25,9 @@
     <div v-else >
         NO EXPECTED DATA TO CHECK
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -66,3 +69,8 @@ export default {
     color: $gray-color;
     }
 </style>
+
+
+
+
+   
