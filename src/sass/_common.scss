@@ -11,6 +11,10 @@
     background-color: $bgc-stripe-1-color;
 }
 
+h4 {
+    color: $tertiary-color;
+}
+
 // --------------------------- TRANSITIONs -----------------------------------
 // transizione in ingresso, per apparire gradualmente
 .fade-enter-active {

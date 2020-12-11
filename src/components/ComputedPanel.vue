@@ -1,7 +1,7 @@
 <template>
   <div class="">
 
-    <h3>Computed Output</h3>
+    <h2>Computed Output</h2>
     <div v-for="(entry, index) in getInputs" :key="index" class="pl-2" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"' >
         <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
         <v-icon v-if="isFood(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-food</v-icon>
@@ -57,16 +57,16 @@ export default {
       },
       nDecimals(number, n){
           // DESCRIPTION:
-          // receive 2 parameters, the number to be truncated and the number of decimals
+          // receive 2 parameters, the number to be truncated and the number of decimals to keep
           // return a number with max "n" decimals
           // similar to toFixed() function but with no rounding
-          // toFixed():  (34.678).toFixed(2)  --->   34.68
+          // toFixed():  (34.678).toFixed(2)  --->   34.68 (rounded!)
           // nDecimals(34.678, 2)  --->  34.67
           let decimals ="";
           let string = number.toString();
           let pointPosition = string.indexOf('.');
-          if(pointPosition!=-1){ // number with some decimals
-            decimals = string.slice(pointPosition+1, pointPosition+n+1); // extract max "n" chars
+          if(pointPosition != -1){ // number with some decimals
+            decimals = string.slice(pointPosition + 1, pointPosition + n + 1); // extract max "n" chars
                 // extract the integer part and concatenates it with decimal part
                 return  parseFloat(string.slice(0, pointPosition) + '.' + decimals); 
           } else { // number with no decimals

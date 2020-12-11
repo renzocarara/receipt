@@ -2,7 +2,7 @@
   <v-container class="my-5 bgc-main">
 
     <v-row>
-        <v-col cols="12"  sm="6" md="3">
+        <v-col cols="12" sm="6" md="3">
             <v-card height="100%" class="mx-auto px-4 py-4">
                 <select-input></select-input>
             </v-card>

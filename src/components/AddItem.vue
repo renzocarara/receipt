@@ -5,7 +5,7 @@
 
         <h4>Add new item</h4>
         <v-row>
-            <v-col cols="12" sm="6" md="2">
+            <v-col class="pb-0" cols="12" sm="6" md="2">
                 <v-text-field
                 v-model="customInputs.quantity"
                 type="number"
@@ -17,8 +17,9 @@
                 />
             </v-col>
 
-            <v-col cols="12" sm="6" md="2">
+            <v-col class="pb-0" cols="12" sm="6" md="2">
             <v-radio-group
+                class="origin"
                 v-model="customInputs.origin"
                 column
                 mandatory
@@ -37,7 +38,7 @@
             </v-radio-group>
             </v-col>
 
-            <v-col cols="12" sm="6" md="6">
+            <v-col class="pb-0" cols="12" sm="6" md="6">
                 <v-select class="" 
                     label="Type of goods"
                     v-model="customInputs.type"
@@ -49,7 +50,7 @@
                 </v-select> 
             </v-col>
             
-            <v-col cols="12" sm="6" md="2">
+            <v-col class="pb-0" cols="12" sm="6" md="2">
                 <v-text-field
                     v-model="customInputs.price"
                     type="number"
@@ -62,13 +63,14 @@
                 ></v-text-field>
             </v-col>
         </v-row>
-
-        <v-btn class=""
-            :disabled="!validity"
-            color="#9FC500"
-            @click="addItem">
-        ADD 
-        </v-btn>
+        <div class="d-flex justify-end">
+            <v-btn class=""
+                :disabled="!validity"
+                color="#9FC500"
+                @click="addItem">
+            ADD 
+            </v-btn>
+        </div>
 
     </v-form>
 
@@ -112,17 +114,13 @@ export default {
      v => v>0 || 'min 1',
      v => v<=100 || 'max 100',
      v => v==Math.trunc(v) || "integer",
-    //   v => String(v).includes('-') || 'invalid format',
-    //  v => String(v).includes('+') || 'invalid format',
-    //  v => String(v).includes('.') || 'invalid format'
      ], 
 
     priceRules: [
-     v => !!v || 'error',
+     v => !!v || 'error!',
      v => v>0 || 'min 0.01',
      v => v<=1000 || 'max 1000',
-    //  v => String(v).includes('-') || 'invalid format',
-    //  v => String(v).includes('+') || 'invalid format'
+    v => !(v.toString().indexOf('')) || 'invalid format',
      ],
 
     typeRules: [
@@ -138,5 +136,9 @@ export default {
 ::v-deep .v-input--selection-controls {
     margin-top: 0;
     padding-top: 0;
+}
+
+::v-deep .origin .v-messages{
+    min-height : 0;
 }
 </style>

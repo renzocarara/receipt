@@ -2,7 +2,7 @@
 
   <div :class="this.$store.state.checkExpectedOutput ? '' : 'grayed'">
 
-    <h3>Expected Output</h3>
+    <h2>Expected Output</h2>
 
     <div  v-if="this.$store.state.checkExpectedOutput == true" >
         <div v-for="(entry, index) in getInputs" :key="index" class="pl-2" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>

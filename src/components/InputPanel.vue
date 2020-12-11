@@ -1,7 +1,7 @@
 <template>
   <div class="">
 
-    <h3>Input</h3>
+    <h2>Input</h2>
     <div v-for="(entry, index) in getInputs" :key="index" class="pl-1" :class='index%2 ? "bgc-stripe-1" : "bgc-stripe-2"'>
         <v-icon class="trash trash-hover mr-2" @click="removeItem(index)">mdi-trash-can-outline</v-icon> 
         <v-icon v-if="isMedical(entry.type)" color="#9FC500 mr-1 ml-2" >mdi-medical-bag</v-icon>
