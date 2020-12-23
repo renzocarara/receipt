@@ -5,7 +5,7 @@
                 <v-card-text class="pb-0">
                     <h4>VERSION</h4>
                     <p>
-                        v1.0.0
+                        v1.0.1
                     </p>
                     <h4>SCOPE</h4>
                     <p>
