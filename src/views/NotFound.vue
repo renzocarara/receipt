@@ -15,9 +15,9 @@
                             Try going back to home page and repeating your action. Or,
                             contact helpdesk for support.
                         </h3>
-                    
+
                 </v-card-text>
-                
+
                 <hr class="my-3" />
                 <v-card-actions>
                     <v-spacer />
@@ -41,4 +41,3 @@ export default {
 //
 
 </style>
-

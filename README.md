@@ -2,7 +2,7 @@
 
 ## Overview
 This readme file gives you instructions how to download, compile and run this application on your own machine.\
-NOTE: you needs to have [npm](https://nodejs.org/en/) istalled on your machine.
+NOTE: you needs to have [npm](https://nodejs.org/en/) installed on your machine.
 
 ## Download sources
 From this page, click on the "Code" green button and select **Download ZIP**.\
@@ -20,12 +20,10 @@ Run the following command to compile and run the application.
 npm run serve
 ```
 You should see indications about the localhost name where the  application is running,
-somenthing like the following:
+something like the following:
 
 App running at:
   - Local:   http://localhost:8080/
   - Network: http://192.168.1.76:8080/
 
 Open the "Local" address in your browser to access the app.
-
-
